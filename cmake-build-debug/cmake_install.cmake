@@ -1,4 +1,4 @@
-# Install script for directory: /Users/wdaughtridge/CLionProjects/Renderer
+# Install script for directory: /Users/wdaughtridge/CLionProjects/VulkanRenderer
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/wdaughtridge/CLionProjects/Renderer/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
