@@ -16,5 +16,6 @@
 #include <string>
 #include <fstream>
 #include <memory>
+#include <algorithm>
 
 #endif //RENDERER_INCLUDES_H

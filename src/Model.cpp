@@ -30,13 +30,13 @@ void RVK::Model::GetMesh(RVK::Model* model, const aiMesh *mesh, const aiScene *s
 
     for(int i = 0; i < mesh->mNumVertices; i++) {
         VertexBuffer::Vertex vertex;
-        if (mesh->mVertices) {
+//        if (mesh->mVertices) {
             vertex.pos.x = mesh->mVertices[i].x;
             vertex.pos.y = mesh->mVertices[i].y;
             vertex.pos.z = mesh->mVertices[i].z;
-        }
-        else
-            vertex.pos = glm::vec3();
+//        }
+//        else
+//            vertex.pos = glm::vec3();
 
 //        if (mesh->HasNormals()) {
 //            vertex.normal.x = mesh->mNormals[i].x;
@@ -67,23 +67,30 @@ void RVK::Model::GetMesh(RVK::Model* model, const aiMesh *mesh, const aiScene *s
 //            vertex.bitangent = glm::vec3();
 //        }
 
-        if (mesh->HasVertexColors(0)) {
-            vertex.color.r = mesh->mColors[i]->r;
-            vertex.color.g = mesh->mColors[i]->g;
-            vertex.color.b = mesh->mColors[i]->b;
-//            vertex.color.a = mesh->mColors[i]->a;
-        }
-        else
-            vertex.color = glm::vec3((rand() % 100)/100.0f,(rand() % 100)/100.0f,(rand() % 100)/100.0f);
+//        if (mesh->HasVertexColors(0)) {
+//            vertex.color.r = mesh->mColors[i]->r;
+//            vertex.color.g = mesh->mColors[i]->g;
+//            vertex.color.b = mesh->mColors[i]->b;
+////            vertex.color.a = mesh->mColors[i]->a;
+//        }
+//        else
+        vertex.color = glm::vec3((rand() % 100)/100.0f,(rand() % 100)/100.0f,(rand() % 100)/100.0f);
 
         returnData.vertices.push_back(vertex);
     }
 
+    uint16_t maxIndex;
+    if (returnData.indices.size() != 0)
+        maxIndex = *std::max_element(returnData.indices.begin(), returnData.indices.end()) + 1;
+    else
+        maxIndex = 0;
+
     for(unsigned int i = 0; i < mesh->mNumFaces; i++) {
         aiFace face = mesh->mFaces[i];
 
-        for(unsigned int j = 0; j < face.mNumIndices; j++)
-            returnData.indices.push_back((uint16_t)face.mIndices[j]);
+        for(unsigned int j = 0; j < face.mNumIndices; j++) {
+            returnData.indices.push_back((uint16_t) face.mIndices[j] + maxIndex);
+        }
     }
 
     aiMaterial* material = scene->mMaterials[mesh->mMaterialIndex];

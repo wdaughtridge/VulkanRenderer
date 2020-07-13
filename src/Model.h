@@ -76,6 +76,7 @@ private:
 
     static std::vector<std::future<void>> s_futures;
     static std::mutex meshLock;
+    static size_t m_numMeshes;
 
 public:
     ModelReturn returnData;
@@ -100,7 +101,7 @@ private:
 
     static void GetMesh(RVK::Model* model, const aiMesh *mesh, const aiScene *scene, ModelReturn& returnData);
 
-    static void GetTextures(RVK::Model* model, RVK::Mesh* mesh, const aiMaterial *mat, const std::vector<unsigned int>* texID);
+//    static void GetTextures(RVK::Model* model, RVK::Mesh* mesh, const aiMaterial *mat, const std::vector<unsigned int>* texID);
 };
 
 }
