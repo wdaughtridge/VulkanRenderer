@@ -63,6 +63,7 @@ int RVK::Renderer::Start()
 
         vkQueueWaitIdle(m_logicalDevice.GetPresentQueue());
         m_timePerFrame = glfwGetTime() - start;
+        std::cout << 1/m_timePerFrame << "\n";
     }
 
     return VK_SUCCESS;
@@ -72,5 +73,6 @@ int RVK::Renderer::UpdateUniformBuffer(uint32_t index)
 {
     UniformBuffer* pUbo = m_commandBuffer.GetUniformBuffersPointer()->at(index).get();
 //    pUbo->m_uniforms.model = glm::rotate(pUbo->m_uniforms.model, glm::radians(45.0f) * (1.0f/255.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+    pUbo->m_uniforms.model = glm::translate(pUbo->m_uniforms.model, glm::vec3(0.0f, 0.0f, 0.02f));
     return pUbo->MapUniformBufferMemory();
 }

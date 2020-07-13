@@ -58,7 +58,7 @@ private:
 
     struct ModelReturn {
         std::vector<VertexBuffer::Vertex> vertices;
-        std::vector<uint16_t> indices;
+        std::vector<uint32_t> indices;
     };
 
     struct ModelData {
@@ -76,7 +76,6 @@ private:
 
     static std::vector<std::future<void>> s_futures;
     static std::mutex meshLock;
-    static size_t m_numMeshes;
 
 public:
     ModelReturn returnData;

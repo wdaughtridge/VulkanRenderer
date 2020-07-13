@@ -37,8 +37,8 @@ public:
             m_pLogicalDevice(pLogicalDevice),
             m_pPhysicalDevice(pPhysicalDevice),
             m_uniforms{glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f)) ,
-                       glm::lookAt(glm::vec3(-2.0f, 2.0f, 2.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, -1.0f, 0.0f)),
-                       glm::perspective(glm::radians(45.0f), 1024 / (float) 768, 0.1f, 100.0f)}
+                       glm::lookAt(glm::vec3(-2.0f, -4.0f, 20.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f)),
+                       glm::perspective(glm::radians(45.0f), 1024.0f / (float) 768.0f, 0.1f, 100.0f)}
     {
         if (CreateUniformBuffer() != VK_SUCCESS)
             std::cout << "ERROR: VERTEX BUFFER NOT CREATED SUCCESSFULLY!\n";

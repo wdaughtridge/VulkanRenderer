@@ -62,7 +62,7 @@ int RVK::CommandBuffer::BeginCommandBufferAndRenderPass()
         VkDeviceSize offsets[] = {0};
         vkCmdBindVertexBuffers(m_commandBuffers[i], 0, 1, vertexBuffers, offsets);
 
-        vkCmdBindIndexBuffer(m_commandBuffers[i], m_model.m_ebo->GetBuffer(), 0, VK_INDEX_TYPE_UINT16);
+        vkCmdBindIndexBuffer(m_commandBuffers[i], m_model.m_ebo->GetBuffer(), 0, VK_INDEX_TYPE_UINT32);
 
         vkCmdBindDescriptorSets(m_commandBuffers[i], VK_PIPELINE_BIND_POINT_GRAPHICS, m_pGraphicsPipeline->GetPipelineLayout(), 0, 1, &m_descriptorSets[i], 0,
                                 nullptr);

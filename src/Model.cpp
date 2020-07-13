@@ -32,7 +32,7 @@ void RVK::Model::GetMesh(RVK::Model* model, const aiMesh *mesh, const aiScene *s
         VertexBuffer::Vertex vertex;
 //        if (mesh->mVertices) {
             vertex.pos.x = mesh->mVertices[i].x;
-            vertex.pos.y = mesh->mVertices[i].y;
+            vertex.pos.y = -1.0f * mesh->mVertices[i].y;
             vertex.pos.z = mesh->mVertices[i].z;
 //        }
 //        else
@@ -79,17 +79,19 @@ void RVK::Model::GetMesh(RVK::Model* model, const aiMesh *mesh, const aiScene *s
         returnData.vertices.push_back(vertex);
     }
 
-    uint16_t maxIndex;
+    uint32_t maxIndex;
     if (returnData.indices.size() != 0)
         maxIndex = *std::max_element(returnData.indices.begin(), returnData.indices.end()) + 1;
     else
         maxIndex = 0;
 
+    std::cout << maxIndex << "\n";
+
     for(unsigned int i = 0; i < mesh->mNumFaces; i++) {
         aiFace face = mesh->mFaces[i];
 
         for(unsigned int j = 0; j < face.mNumIndices; j++) {
-            returnData.indices.push_back((uint16_t) face.mIndices[j] + maxIndex);
+            returnData.indices.push_back((uint32_t) face.mIndices[j] + maxIndex);
         }
     }
 

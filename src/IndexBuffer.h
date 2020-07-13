@@ -21,10 +21,10 @@ private:
 
     PhysicalDevice* m_pPhysicalDevice;
 
-    std::vector<uint16_t> m_indices;
+    std::vector<uint32_t> m_indices;
 
 public:
-    IndexBuffer(LogicalDevice* pLogicalDevice, PhysicalDevice* pPhysicalDevice, std::vector<uint16_t>& indices) :
+    IndexBuffer(LogicalDevice* pLogicalDevice, PhysicalDevice* pPhysicalDevice, std::vector<uint32_t>& indices) :
         m_pLogicalDevice(pLogicalDevice),
         m_pPhysicalDevice(pPhysicalDevice),
 //        m_indices{

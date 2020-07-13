@@ -10,7 +10,7 @@ int RVK::IndexBuffer::CreateIndexBuffer()
     bufferCreateInfo.sType = VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO;
     bufferCreateInfo.flags = 0;
     bufferCreateInfo.pNext = VK_NULL_HANDLE;
-    bufferCreateInfo.size = sizeof(uint16_t) * m_indices.size();
+    bufferCreateInfo.size = sizeof(uint32_t) * m_indices.size();
     bufferCreateInfo.usage = VK_BUFFER_USAGE_INDEX_BUFFER_BIT;
     bufferCreateInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
 
@@ -49,8 +49,8 @@ int RVK::IndexBuffer::MapIndexBufferMemory()
 {
     void* data;
 
-    vkMapMemory(m_pLogicalDevice->GetDevice(), m_eboMemory, 0, sizeof(uint16_t) * m_indices.size(), 0, &data);
-    memcpy(data, m_indices.data(), (size_t)(sizeof(uint16_t) * m_indices.size()));
+    vkMapMemory(m_pLogicalDevice->GetDevice(), m_eboMemory, 0, sizeof(uint32_t) * m_indices.size(), 0, &data);
+    memcpy(data, m_indices.data(), (size_t)(sizeof(uint32_t) * m_indices.size()));
     vkUnmapMemory(m_pLogicalDevice->GetDevice(), m_eboMemory);
 
     return 0;

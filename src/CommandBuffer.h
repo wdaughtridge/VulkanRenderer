@@ -53,7 +53,7 @@ public:
         m_pSwapchain(pSwapchain),
         m_pGraphicsPipeline(pGraphicsPipeline),
         m_pFramebuffer(pFramebuffer),
-        m_model(m_pLogicalDevice, m_pPhysicalDevice, "/Users/wdaughtridge/GraviT/src/asset/backpack/backpack.obj")
+        m_model(m_pLogicalDevice, m_pPhysicalDevice, "/Users/wdaughtridge/GraviT/src/asset/junkshop/junkshop.obj")
 //        m_vbo(m_pLogicalDevice, m_pPhysicalDevice, std::vector<VertexBuffer::Vertex>{
 //            {{-0.5f, -0.5f}, {1.0f, 0.0f, 0.0f}},
 //            {{0.5f, -0.5f}, {0.0f, 1.0f, 0.0f}},
