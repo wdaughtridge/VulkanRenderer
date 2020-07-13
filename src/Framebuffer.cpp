@@ -10,12 +10,12 @@ int RVK::Framebuffer::CreateFramebuffer()
     m_swapchainFramebuffers.resize(imageViews->size());
 
     for (uint32_t i = 0; i < m_swapchainFramebuffers.size(); i++) {
-        VkImageView attachments[] = { imageViews->at(i) };
+        VkImageView attachments[] = { imageViews->at(i), m_pSwapchain->GetDepthImageView() };
 
         VkFramebufferCreateInfo framebufferCreateInfo;
         framebufferCreateInfo.sType = VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO;
         framebufferCreateInfo.renderPass = m_pGraphicsPipeline->GetRenderPass();
-        framebufferCreateInfo.attachmentCount = 1;
+        framebufferCreateInfo.attachmentCount = 2;
         framebufferCreateInfo.pAttachments = attachments;
         framebufferCreateInfo.width = m_pSwapchain->GetExtent().width;
         framebufferCreateInfo.height = m_pSwapchain->GetExtent().height;

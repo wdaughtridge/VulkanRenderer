@@ -71,6 +71,6 @@ int RVK::Renderer::Start()
 int RVK::Renderer::UpdateUniformBuffer(uint32_t index)
 {
     UniformBuffer* pUbo = m_commandBuffer.GetUniformBuffersPointer()->at(index).get();
-//    pUbo->m_uniforms.model = glm::rotate(pUbo->m_uniforms.model, glm::radians(45.0f) * (1.0f/255.0f), glm::vec3(0.0f, 0.0f, 1.0f));
+    pUbo->m_uniforms.model = glm::rotate(pUbo->m_uniforms.model, glm::radians(45.0f) * (1.0f/255.0f), glm::vec3(0.0f, 0.0f, 1.0f));
     return pUbo->MapUniformBufferMemory();
 }

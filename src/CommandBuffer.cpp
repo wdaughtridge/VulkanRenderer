@@ -50,9 +50,10 @@ int RVK::CommandBuffer::BeginCommandBufferAndRenderPass()
         renderPassBeginInfo.renderArea.offset = {0, 0 };
         renderPassBeginInfo.renderArea.extent = m_pSwapchain->GetExtent();
 
-        VkClearValue clearValue{0.2f, 0.2f, 0.2f, 1.0f};
-        renderPassBeginInfo.clearValueCount = 1;
-        renderPassBeginInfo.pClearValues = &clearValue;
+        VkClearValue clearValue[] = {{0.2f, 0.2f, 0.2f, 1.0f}, {1.0f, 0.0f}};
+
+        renderPassBeginInfo.clearValueCount = 2;
+        renderPassBeginInfo.pClearValues = clearValue;
 
         vkCmdBeginRenderPass(m_commandBuffers[i], &renderPassBeginInfo, VK_SUBPASS_CONTENTS_INLINE);
         vkCmdBindPipeline(m_commandBuffers[i], VK_PIPELINE_BIND_POINT_GRAPHICS, m_pGraphicsPipeline->GetPipeline());

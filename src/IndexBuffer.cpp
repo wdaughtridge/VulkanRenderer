@@ -26,15 +26,15 @@ int RVK::IndexBuffer::AllocateBufferMemory()
     allocateInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
     allocateInfo.pNext = VK_NULL_HANDLE;
     allocateInfo.allocationSize = memRequirements.size;
-    allocateInfo.memoryTypeIndex = GetMemoryType(memRequirements.memoryTypeBits, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT);
+    allocateInfo.memoryTypeIndex = GetMemoryType(memRequirements.memoryTypeBits, VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT | VK_MEMORY_PROPERTY_HOST_COHERENT_BIT, m_pPhysicalDevice);
 
     return vkAllocateMemory(m_pLogicalDevice->GetDevice(), &allocateInfo, nullptr, &m_eboMemory);
 }
 
-uint32_t RVK::IndexBuffer::GetMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags memoryPropertyFlags)
+uint32_t RVK::IndexBuffer::GetMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags memoryPropertyFlags, PhysicalDevice* pPhysicalDevice)
 {
     VkPhysicalDeviceMemoryProperties memoryProperties;
-    vkGetPhysicalDeviceMemoryProperties(m_pPhysicalDevice->GetVkPhysicalDevice(), &memoryProperties);
+    vkGetPhysicalDeviceMemoryProperties(pPhysicalDevice->GetVkPhysicalDevice(), &memoryProperties);
 
     for (uint32_t i = 0; i < memoryProperties.memoryTypeCount; i++) {
         if ((static_cast<uint32_t>(typeFilter) & (static_cast<uint32_t>(1) << i)) && (memoryProperties.memoryTypes[i].propertyFlags & memoryPropertyFlags) == memoryPropertyFlags) {

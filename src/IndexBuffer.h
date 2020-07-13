@@ -27,13 +27,13 @@ public:
     IndexBuffer(LogicalDevice* pLogicalDevice, PhysicalDevice* pPhysicalDevice, std::vector<uint16_t>& indices) :
         m_pLogicalDevice(pLogicalDevice),
         m_pPhysicalDevice(pPhysicalDevice),
-//        m_indices{
-//            0, 1, 2,
-//            2, 3, 0,
-//            4, 5, 6,
-//            6, 7, 4
-//            }
-        m_indices(indices)
+        m_indices{
+            0, 1, 2,
+            2, 3, 0,
+            4, 5, 6,
+            6, 7, 4
+            }
+//        m_indices(indices)
     {
         if (CreateIndexBuffer() != VK_SUCCESS)
             std::cout << "ERROR: VERTEX BUFFER NOT CREATED SUCCESSFULLY!\n";
@@ -56,14 +56,14 @@ public:
 
     size_t GetNumIndices() const { return m_indices.size(); }
 
+    static uint32_t GetMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags memoryPropertyFlags, PhysicalDevice* pPhysicalDevice);
+
 private:
     int CreateIndexBuffer();
 
     int AllocateBufferMemory();
 
     int MapIndexBufferMemory();
-
-    uint32_t GetMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags memoryPropertyFlags);
 };
 
 }

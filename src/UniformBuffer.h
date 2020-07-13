@@ -36,8 +36,8 @@ public:
     UniformBuffer(LogicalDevice* pLogicalDevice, PhysicalDevice* pPhysicalDevice) :
             m_pLogicalDevice(pLogicalDevice),
             m_pPhysicalDevice(pPhysicalDevice),
-            m_uniforms{glm::translate(glm::mat4(1.0f), glm::vec3(3.0f, -6.0f, -3.0f)) ,
-                       glm::lookAt(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f)),
+            m_uniforms{glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f)) ,
+                       glm::lookAt(glm::vec3(2.0f, 2.0f, 2.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f)),
                        glm::perspective(glm::radians(45.0f), 1024 / (float) 768, 0.1f, 100.0f)}
     {
         if (CreateUniformBuffer() != VK_SUCCESS)

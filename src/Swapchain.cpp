@@ -100,3 +100,71 @@ int RVK::Swapchain::CreateImageViews()
 
     return res;
 }
+
+int RVK::Swapchain::CreateDepthResources()
+{
+    VkFormat depthFormat;
+
+    std::vector<VkFormat> candidates{VK_FORMAT_D32_SFLOAT, VK_FORMAT_D32_SFLOAT_S8_UINT, VK_FORMAT_D24_UNORM_S8_UINT};
+    VkImageTiling tiling = VK_IMAGE_TILING_OPTIMAL;
+    VkFormatFeatureFlags features = VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT;
+
+    for (VkFormat format : candidates) {
+        VkFormatProperties props;
+        vkGetPhysicalDeviceFormatProperties(m_pPhysicalDevice->GetVkPhysicalDevice(), format, &props);
+
+        if (tiling == VK_IMAGE_TILING_LINEAR && (props.linearTilingFeatures & features) == features) {
+            return format;
+        } else if (tiling == VK_IMAGE_TILING_OPTIMAL && (props.optimalTilingFeatures & features) == features) {
+            depthFormat = format;
+        }
+    }
+
+    VkImageCreateInfo imageInfo{};
+    imageInfo.sType = VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO;
+    imageInfo.imageType = VK_IMAGE_TYPE_2D;
+    imageInfo.extent.width = m_extent.width;
+    imageInfo.extent.height = m_extent.height;
+    imageInfo.extent.depth = 1;
+    imageInfo.mipLevels = 1;
+    imageInfo.arrayLayers = 1;
+    imageInfo.format = VK_FORMAT_D32_SFLOAT_S8_UINT;
+    imageInfo.tiling = tiling;
+    imageInfo.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+    imageInfo.usage = VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT;
+    imageInfo.samples = VK_SAMPLE_COUNT_1_BIT;
+    imageInfo.sharingMode = VK_SHARING_MODE_EXCLUSIVE;
+
+    if (vkCreateImage(m_pLogicalDevice->GetDevice(), &imageInfo, nullptr, &m_depthImage) != VK_SUCCESS)
+        throw std::runtime_error("failed to create image!");
+
+    VkMemoryRequirements memRequirements;
+    vkGetImageMemoryRequirements(m_pLogicalDevice->GetDevice(), m_depthImage, &memRequirements);
+
+    VkMemoryAllocateInfo allocInfo{};
+    allocInfo.sType = VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO;
+    allocInfo.allocationSize = memRequirements.size;
+    allocInfo.memoryTypeIndex = IndexBuffer::GetMemoryType(memRequirements.memoryTypeBits, VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT, m_pPhysicalDevice);
+
+    if (vkAllocateMemory(m_pLogicalDevice->GetDevice(), &allocInfo, nullptr, &m_depthMemory) != VK_SUCCESS)
+        throw std::runtime_error("failed to allocate image memory!");
+
+    vkBindImageMemory(m_pLogicalDevice->GetDevice(), m_depthImage, m_depthMemory, 0);
+
+    VkImageViewCreateInfo viewInfo{};
+    viewInfo.sType = VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO;
+    viewInfo.image = m_depthImage;
+    viewInfo.viewType = VK_IMAGE_VIEW_TYPE_2D;
+    viewInfo.format = VK_FORMAT_D32_SFLOAT_S8_UINT;
+    viewInfo.subresourceRange.aspectMask = VK_IMAGE_ASPECT_DEPTH_BIT;
+    viewInfo.subresourceRange.baseMipLevel = 0;
+    viewInfo.subresourceRange.levelCount = 1;
+    viewInfo.subresourceRange.baseArrayLayer = 0;
+    viewInfo.subresourceRange.layerCount = 1;
+
+    VkImageView imageView;
+    if (vkCreateImageView(m_pLogicalDevice->GetDevice(), &viewInfo, nullptr, &m_depthView) != VK_SUCCESS)
+        throw std::runtime_error("failed to create texture image view!");
+
+    return VK_SUCCESS;
+}

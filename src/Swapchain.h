@@ -9,6 +9,7 @@
 #include "Instance.h"
 #include "LogicalDevice.h"
 #include "PhysicalDevice.h"
+#include "IndexBuffer.h"
 
 namespace RVK {
 
@@ -30,6 +31,12 @@ private:
 
     std::vector<VkImageView> m_swapchainImageViews;
 
+    VkImage m_depthImage;
+
+    VkDeviceMemory m_depthMemory;
+
+    VkImageView m_depthView;
+
 public:
     Swapchain(Instance* pInstance, LogicalDevice* pLogicalDevice, PhysicalDevice* pPhysicalDevice) :
         m_pInstance(pInstance),
@@ -41,6 +48,9 @@ public:
 
         if (CreateImageViews() != VK_SUCCESS)
             std::cout << "ERROR: IMAGE VIEWS NOT CREATED!\n";
+
+        if (CreateDepthResources() != VK_SUCCESS)
+            std::cout << "ERROR: DEPTH RESOURCES NOT CREATED!\n";
     }
 
     ~Swapchain()
@@ -50,6 +60,10 @@ public:
         }
 
         vkDestroySwapchainKHR(m_pLogicalDevice->GetDevice(), m_swapchain, nullptr);
+
+        vkDestroyImage(m_pLogicalDevice->GetDevice(), m_depthImage, nullptr);
+        vkDestroyImageView(m_pLogicalDevice->GetDevice(), m_depthView, nullptr);
+        vkFreeMemory(m_pLogicalDevice->GetDevice(), m_depthMemory, nullptr);
     }
 
     VkFormat GetFormat() const { return m_format; }
@@ -60,10 +74,14 @@ public:
 
     std::vector<VkImageView>* GetImageViewsPointer() { return &m_swapchainImageViews; }
 
+    VkImageView GetDepthImageView() const { return m_depthView; }
+
 private:
     int CreateSwapchain();
 
     int CreateImageViews();
+
+    int CreateDepthResources();
 };
 
 }

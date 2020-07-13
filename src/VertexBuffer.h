@@ -60,17 +60,17 @@ public:
     VertexBuffer(LogicalDevice* pLogicalDevice, PhysicalDevice* pPhysicalDevice, const std::vector<Vertex>& vertices) :
         m_pLogicalDevice(pLogicalDevice),
         m_pPhysicalDevice(pPhysicalDevice),
-//        m_vertices{
-//            {{-0.5f, -0.5f, 0.0f}, {1.0f, 0.0f, 0.0f}},
-//            {{0.5f, -0.5f, 0.0f}, {0.0f, 1.0f, 0.0f}},
-//            {{0.5f, 0.5f, 0.0f}, {0.0f, 0.0f, 1.0f}},
-//            {{-0.5f, 0.5f, 0.0f}, {1.0f, 1.0f, 1.0f}},
-//            {{-0.5f, 0.5f, -1.0f}, {1.0f, 0.0f, 0.0f}},
-//            {{0.5f, 0.5f, -1.0f}, {0.0f, 1.0f, 0.0f}},
-//            {{0.5f, 0.5f, 0.0f}, {0.0f, 0.0f, 1.0f}},
-//            {{-0.5f, 0.5f, 0.0f}, {1.0f, 1.0f, 1.0f}}
-//            }
-        m_vertices(vertices)
+        m_vertices{
+            {{-0.5f, -0.5f, 0.0f}, {1.0f, 0.0f, 0.0f}},
+            {{0.5f, -0.5f, 0.0f}, {0.0f, 1.0f, 0.0f}},
+            {{0.5f, 0.5f, 0.0f}, {0.0f, 0.0f, 1.0f}},
+            {{-0.5f, 0.5f, 0.0f}, {1.0f, 1.0f, 1.0f}},
+            {{-0.5f, 0.5f, -1.0f}, {1.0f, 0.0f, 0.0f}},
+            {{0.5f, 0.5f, -1.0f}, {0.0f, 1.0f, 0.0f}},
+            {{0.5f, 0.5f, 0.0f}, {0.0f, 0.0f, 1.0f}},
+            {{-0.5f, 0.5f, 0.0f}, {1.0f, 1.0f, 1.0f}}
+            }
+//        m_vertices(vertices)
     {
         if (CreateVertexBuffer() != VK_SUCCESS)
             std::cout << "ERROR: VERTEX BUFFER NOT CREATED SUCCESSFULLY!\n";

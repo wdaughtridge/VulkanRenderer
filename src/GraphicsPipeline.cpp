@@ -20,15 +20,32 @@ int RVK::GraphicsPipeline::CreateRenderPass()
     colorAttachmentRef.attachment = 0;
     colorAttachmentRef.layout = VK_IMAGE_LAYOUT_COLOR_ATTACHMENT_OPTIMAL;
 
+    VkAttachmentDescription depthAttachment{};
+    depthAttachment.flags = 0;
+    depthAttachment.format = VK_FORMAT_D32_SFLOAT_S8_UINT;
+    depthAttachment.samples = VK_SAMPLE_COUNT_1_BIT;
+    depthAttachment.loadOp = VK_ATTACHMENT_LOAD_OP_CLEAR;
+    depthAttachment.storeOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
+    depthAttachment.stencilLoadOp = VK_ATTACHMENT_LOAD_OP_DONT_CARE;
+    depthAttachment.stencilStoreOp = VK_ATTACHMENT_STORE_OP_DONT_CARE;
+    depthAttachment.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED;
+    depthAttachment.finalLayout = VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL;
+
+    VkAttachmentReference depthReference{};
+    depthReference.attachment = 1;
+    depthReference.layout = VK_IMAGE_LAYOUT_DEPTH_STENCIL_ATTACHMENT_OPTIMAL;
+
     VkSubpassDescription subpassDescription{};
     subpassDescription.pipelineBindPoint = VK_PIPELINE_BIND_POINT_GRAPHICS;
     subpassDescription.colorAttachmentCount = 1;
     subpassDescription.pColorAttachments = &colorAttachmentRef;
+    subpassDescription.pDepthStencilAttachment = &depthReference;
 
+    VkAttachmentDescription attachments[] = { colorAttachment, depthAttachment };
     VkRenderPassCreateInfo renderPassCreateInfo{};
     renderPassCreateInfo.sType = VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO;
-    renderPassCreateInfo.attachmentCount = 1;
-    renderPassCreateInfo.pAttachments = &colorAttachment;
+    renderPassCreateInfo.attachmentCount = 2;
+    renderPassCreateInfo.pAttachments = attachments;
     renderPassCreateInfo.subpassCount = 1;
     renderPassCreateInfo.pSubpasses = &subpassDescription;
 
@@ -158,6 +175,14 @@ int RVK::GraphicsPipeline::CreateGraphicsPipeline()
     stages.push_back(vert.CreateShaderStageInfo());
     stages.push_back(frag.CreateShaderStageInfo());
 
+    VkPipelineDepthStencilStateCreateInfo depthStencil{};
+    depthStencil.sType = VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO;
+    depthStencil.depthTestEnable = VK_TRUE;
+    depthStencil.depthWriteEnable = VK_TRUE;
+    depthStencil.depthCompareOp = VK_COMPARE_OP_LESS;
+    depthStencil.depthBoundsTestEnable = VK_FALSE;
+    depthStencil.stencilTestEnable = VK_FALSE;
+
     VkGraphicsPipelineCreateInfo pipelineCreateInfo{};
     pipelineCreateInfo.sType = VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO;
     pipelineCreateInfo.stageCount = static_cast<uint32_t>(stages.size());
@@ -167,7 +192,7 @@ int RVK::GraphicsPipeline::CreateGraphicsPipeline()
     pipelineCreateInfo.pViewportState = &viewportStateCreateInfo;
     pipelineCreateInfo.pRasterizationState = &rasterizationStateCreateInfo;
     pipelineCreateInfo.pMultisampleState = &multisampleStateCreateInfo;
-    pipelineCreateInfo.pDepthStencilState = VK_NULL_HANDLE;
+    pipelineCreateInfo.pDepthStencilState = &depthStencil;
     pipelineCreateInfo.pColorBlendState = &colorBlendStateCreateInfo;
     pipelineCreateInfo.pDynamicState = VK_NULL_HANDLE;
     pipelineCreateInfo.layout = m_pipelineLayout;
