@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Renderer.dir/main.cpp.o"
+  "CMakeFiles/Renderer.dir/src/Camera.cpp.o"
   "CMakeFiles/Renderer.dir/src/CommandBuffer.cpp.o"
   "CMakeFiles/Renderer.dir/src/Framebuffer.cpp.o"
   "CMakeFiles/Renderer.dir/src/GraphicsPipeline.cpp.o"

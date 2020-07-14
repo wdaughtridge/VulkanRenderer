@@ -6,6 +6,7 @@
 #define RENDERER_WINDOW_H
 
 #include "Includes.h"
+#include "Camera.h"
 
 namespace RVK
 {

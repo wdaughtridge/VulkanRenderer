@@ -10,6 +10,7 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include "LogicalDevice.h"
 #include "PhysicalDevice.h"
+#include "Camera.h"
 
 namespace RVK {
 
@@ -33,12 +34,26 @@ private:
     PhysicalDevice* m_pPhysicalDevice;
 
 public:
-    UniformBuffer(LogicalDevice* pLogicalDevice, PhysicalDevice* pPhysicalDevice) :
+    UniformBuffer(const UniformBuffer& copy) :
+        m_pLogicalDevice(copy.m_pLogicalDevice),
+        m_pPhysicalDevice(copy.m_pPhysicalDevice),
+        m_uniforms(copy.m_uniforms)
+    {
+        if (CreateUniformBuffer() != VK_SUCCESS)
+            std::cout << "ERROR: VERTEX BUFFER NOT CREATED SUCCESSFULLY!\n";
+
+        if (AllocateBufferMemory() != VK_SUCCESS)
+            std::cout << "ERROR: VERTEX BUFFER MEMORY NOT ALLOCATED!\n";
+
+        vkBindBufferMemory(m_pLogicalDevice->GetDevice(), m_ubo, m_uboMemory, 0);
+    }
+
+    UniformBuffer(LogicalDevice* pLogicalDevice, PhysicalDevice* pPhysicalDevice, Camera* pCamera) :
             m_pLogicalDevice(pLogicalDevice),
             m_pPhysicalDevice(pPhysicalDevice),
-            m_uniforms{glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, 0.0f)) ,
-                       glm::lookAt(glm::vec3(-2.0f, -4.0f, 20.0f), glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f)),
-                       glm::perspective(glm::radians(45.0f), 1024.0f / (float) 768.0f, 0.1f, 100.0f)}
+            m_uniforms{pCamera->m_model,
+                       pCamera->m_view,
+                       pCamera->m_proj }
     {
         if (CreateUniformBuffer() != VK_SUCCESS)
             std::cout << "ERROR: VERTEX BUFFER NOT CREATED SUCCESSFULLY!\n";

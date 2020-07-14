@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/wdaughtridge/CLionProjects/VulkanRenderer/main.cpp" "/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-debug/CMakeFiles/Renderer.dir/main.cpp.o"
+  "/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Camera.cpp" "/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-debug/CMakeFiles/Renderer.dir/src/Camera.cpp.o"
   "/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/CommandBuffer.cpp" "/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-debug/CMakeFiles/Renderer.dir/src/CommandBuffer.cpp.o"
   "/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Framebuffer.cpp" "/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-debug/CMakeFiles/Renderer.dir/src/Framebuffer.cpp.o"
   "/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/GraphicsPipeline.cpp" "/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-debug/CMakeFiles/Renderer.dir/src/GraphicsPipeline.cpp.o"

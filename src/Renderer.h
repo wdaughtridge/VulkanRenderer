@@ -18,6 +18,7 @@
 #include "CommandBuffer.h"
 #include "Semaphore.h"
 #include "UniformBuffer.h"
+#include "Camera.h"
 
 namespace RVK {
 
@@ -37,6 +38,8 @@ private:
 
     Framebuffer m_framebuffer;
 
+    Camera m_camera;
+
     CommandBuffer m_commandBuffer;
 
     Semaphore m_imageAvailableSemaphore;
@@ -53,7 +56,8 @@ public:
         m_swapchain(&m_instance, &m_logicalDevice, &m_physicalDevice),
         m_pipeline(&m_physicalDevice, &m_logicalDevice, &m_swapchain),
         m_framebuffer(&m_logicalDevice, &m_swapchain, &m_pipeline),
-        m_commandBuffer(&m_logicalDevice, &m_physicalDevice, &m_swapchain, &m_pipeline, &m_framebuffer),
+        m_camera(),
+        m_commandBuffer(&m_logicalDevice, &m_physicalDevice, &m_swapchain, &m_pipeline, &m_framebuffer, &m_camera),
         m_imageAvailableSemaphore(&m_logicalDevice),
         m_renderFinishedSemaphore(&m_logicalDevice),
         m_timePerFrame(0)
@@ -65,7 +69,7 @@ public:
 
     int Start();
 
-    int UpdateUniformBuffer(uint32_t index);
+    int UpdateUniformBuffer();
 };
 
 }

@@ -16,6 +16,7 @@
 #include <string>
 #include <fstream>
 #include <memory>
+#include <queue>
 #include <algorithm>
 
 #endif //RENDERER_INCLUDES_H

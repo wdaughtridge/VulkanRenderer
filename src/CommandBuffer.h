@@ -44,10 +44,10 @@ private:
 
     Model m_model;
 
-    std::vector<std::shared_ptr<UniformBuffer>> m_uniformBuffers;
+    std::vector<UniformBuffer> m_uniformBuffers;
 
 public:
-    CommandBuffer(LogicalDevice* pLogicalDevice, PhysicalDevice* pPhysicalDevice, Swapchain* pSwapchain, GraphicsPipeline* pGraphicsPipeline, Framebuffer* pFramebuffer) :
+    CommandBuffer(LogicalDevice* pLogicalDevice, PhysicalDevice* pPhysicalDevice, Swapchain* pSwapchain, GraphicsPipeline* pGraphicsPipeline, Framebuffer* pFramebuffer, Camera* pCamera) :
         m_pLogicalDevice(pLogicalDevice),
         m_pPhysicalDevice(pPhysicalDevice),
         m_pSwapchain(pSwapchain),
@@ -61,8 +61,10 @@ public:
 //            {{-0.5f, 0.5f}, {1.0f, 1.0f, 1.0f}} }),
 //        m_ebo(m_pLogicalDevice, m_pPhysicalDevice)
     {
-        for (size_t i = 0; i < m_pSwapchain->GetImageViewsPointer()->size(); i++)
-            m_uniformBuffers.push_back(std::make_shared<UniformBuffer>(m_pLogicalDevice, m_pPhysicalDevice));
+        for (size_t i = 0; i < m_pSwapchain->GetImageViewsPointer()->size(); i++) {
+            UniformBuffer buf{m_pLogicalDevice, m_pPhysicalDevice, pCamera};
+            m_uniformBuffers.push_back(buf);
+        }
 
         if (CreateCommandPool() != VK_SUCCESS)
             std::cout << "ERROR: COMMAND POOL NOT CREATED!\n";
@@ -88,7 +90,7 @@ public:
 
     std::vector<VkCommandBuffer>* GetCommandBuffersPointer() { return &m_commandBuffers; }
 
-    std::vector<std::shared_ptr<UniformBuffer>>* GetUniformBuffersPointer() { return &m_uniformBuffers; }
+    std::vector<UniformBuffer>* GetUniformBuffersPointer() { return &m_uniformBuffers; }
 
 private:
     int CreateCommandPool();

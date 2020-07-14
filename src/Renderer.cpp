@@ -41,7 +41,7 @@ int RVK::Renderer::Draw()
     presentInfo.pResults = VK_NULL_HANDLE;
     presentInfo.pNext = VK_NULL_HANDLE;
 
-    UpdateUniformBuffer(imageIndex);
+    UpdateUniformBuffer();
 
     res = vkQueuePresentKHR(m_logicalDevice.GetPresentQueue(), &presentInfo);
     if (res != VK_SUCCESS)
@@ -63,16 +63,82 @@ int RVK::Renderer::Start()
 
         vkQueueWaitIdle(m_logicalDevice.GetPresentQueue());
         m_timePerFrame = glfwGetTime() - start;
-        std::cout << 1/m_timePerFrame << "\n";
     }
 
     return VK_SUCCESS;
 }
 
-int RVK::Renderer::UpdateUniformBuffer(uint32_t index)
+int RVK::Renderer::UpdateUniformBuffer()
 {
-    UniformBuffer* pUbo = m_commandBuffer.GetUniformBuffersPointer()->at(index).get();
-//    pUbo->m_uniforms.model = glm::rotate(pUbo->m_uniforms.model, glm::radians(45.0f) * (1.0f/255.0f), glm::vec3(0.0f, 0.0f, 1.0f));
-    pUbo->m_uniforms.model = glm::translate(pUbo->m_uniforms.model, glm::vec3(0.0f, 0.0f, 0.02f));
-    return pUbo->MapUniformBufferMemory();
+    Camera::MouseDelta mD = Camera::GetMouseDelta();
+
+    if (mD.dX != 0 && mD.dY != 0) {
+        m_camera.m_yaw += static_cast<float>(mD.dX);
+        m_camera.m_pitch -= static_cast<float>(mD.dY);
+
+        if(m_camera.m_pitch > 89.0f)
+            m_camera.m_pitch = 89.0f;
+        if(m_camera.m_pitch < -89.0f)
+            m_camera.m_pitch = -89.0f;
+
+        glm::vec3 direction;
+        direction.x = cos(glm::radians(m_camera.m_yaw)) * cos(glm::radians(m_camera.m_pitch));
+        direction.y = sin(glm::radians(m_camera.m_pitch));
+        direction.z = sin(glm::radians(m_camera.m_yaw)) * cos(glm::radians(m_camera.m_pitch));
+        m_camera.m_cameraFront = glm::normalize(direction);
+        for (auto & i : *m_commandBuffer.GetUniformBuffersPointer()) {
+            m_camera.m_view = glm::lookAt(m_camera.m_cameraPosition, m_camera.m_cameraPosition + m_camera.m_cameraFront, m_camera.m_cameraUp);
+            i.m_uniforms.view = m_camera.m_view;
+            i.MapUniformBufferMemory();
+        }
+    }
+
+    Camera::KeyEvent e = Camera::GetNextKeyEvent();
+
+    if (e.key == -1) {
+        for (auto & i : *m_commandBuffer.GetUniformBuffersPointer()) {
+            i.m_uniforms.view = m_camera.m_view;
+            i.MapUniformBufferMemory();
+        }
+        return VK_SUCCESS;
+    }
+
+    if (e.key == GLFW_KEY_W) {
+        for (auto & i : *m_commandBuffer.GetUniformBuffersPointer()) {
+            m_camera.m_cameraPosition.z += 0.5;
+            m_camera.m_view = glm::lookAt(m_camera.m_cameraPosition, m_camera.m_cameraPosition + m_camera.m_cameraFront, m_camera.m_cameraUp);
+            i.m_uniforms.view = m_camera.m_view;
+            i.MapUniformBufferMemory();
+        }
+        return VK_SUCCESS;
+    }
+    if (e.key == GLFW_KEY_A) {
+        for (auto & i : *m_commandBuffer.GetUniformBuffersPointer()) {
+            m_camera.m_cameraPosition.x -= 0.5;
+            m_camera.m_view = glm::lookAt(m_camera.m_cameraPosition, m_camera.m_cameraPosition + m_camera.m_cameraFront, m_camera.m_cameraUp);
+            i.m_uniforms.view = m_camera.m_view;
+            i.MapUniformBufferMemory();
+        }
+        return VK_SUCCESS;
+    }
+    if (e.key == GLFW_KEY_S) {
+        for (auto & i : *m_commandBuffer.GetUniformBuffersPointer()) {
+            m_camera.m_cameraPosition.z -= 0.5;
+            m_camera.m_view = glm::lookAt(m_camera.m_cameraPosition, m_camera.m_cameraPosition + m_camera.m_cameraFront, m_camera.m_cameraUp);
+            i.m_uniforms.view = m_camera.m_view;
+            i.MapUniformBufferMemory();
+        }
+        return VK_SUCCESS;
+    }
+    if (e.key == GLFW_KEY_D) {
+        for (auto & i : *m_commandBuffer.GetUniformBuffersPointer()) {
+            m_camera.m_cameraPosition.x += 0.5;
+            m_camera.m_view = glm::lookAt(m_camera.m_cameraPosition, m_camera.m_cameraPosition + m_camera.m_cameraFront, m_camera.m_cameraUp);
+            i.m_uniforms.view = m_camera.m_view;
+            i.MapUniformBufferMemory();
+        }
+        return VK_SUCCESS;
+    }
+
+    return VK_ERROR_UNKNOWN;
 }

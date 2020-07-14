@@ -17,6 +17,11 @@ int RVK::Window::InitWindow()
     if (!m_window)
         return -1;
 
+    glfwSetKeyCallback(m_window, Camera::key_callback);
+    glfwSetCursorPosCallback(m_window, Camera::cursor_position_callback);
+
+    glfwSetInputMode(m_window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
     return 0;
 }
 

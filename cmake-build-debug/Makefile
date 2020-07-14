@@ -150,6 +150,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/Renderer.dir/build.make CMakeFiles/Renderer.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+src/Camera.o: src/Camera.cpp.o
+
+.PHONY : src/Camera.o
+
+# target to build an object file
+src/Camera.cpp.o:
+	$(MAKE) -f CMakeFiles/Renderer.dir/build.make CMakeFiles/Renderer.dir/src/Camera.cpp.o
+.PHONY : src/Camera.cpp.o
+
+src/Camera.i: src/Camera.cpp.i
+
+.PHONY : src/Camera.i
+
+# target to preprocess a source file
+src/Camera.cpp.i:
+	$(MAKE) -f CMakeFiles/Renderer.dir/build.make CMakeFiles/Renderer.dir/src/Camera.cpp.i
+.PHONY : src/Camera.cpp.i
+
+src/Camera.s: src/Camera.cpp.s
+
+.PHONY : src/Camera.s
+
+# target to generate assembly for a file
+src/Camera.cpp.s:
+	$(MAKE) -f CMakeFiles/Renderer.dir/build.make CMakeFiles/Renderer.dir/src/Camera.cpp.s
+.PHONY : src/Camera.cpp.s
+
 src/CommandBuffer.o: src/CommandBuffer.cpp.o
 
 .PHONY : src/CommandBuffer.o
@@ -567,6 +594,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/Camera.o"
+	@echo "... src/Camera.i"
+	@echo "... src/Camera.s"
 	@echo "... src/CommandBuffer.o"
 	@echo "... src/CommandBuffer.i"
 	@echo "... src/CommandBuffer.s"

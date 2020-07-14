@@ -88,6 +88,12 @@
 		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Application.h">
 			<Option target="Renderer"/>
 		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Camera.cpp">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Camera.h">
+			<Option target="Renderer"/>
+		</Unit>
 		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/CommandBuffer.cpp">
 			<Option target="Renderer"/>
 		</Unit>

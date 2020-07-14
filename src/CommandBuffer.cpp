@@ -111,7 +111,7 @@ int RVK::CommandBuffer::CreateDescriptorSets()
 
     for (size_t i = 0; i < m_pSwapchain->GetImageViewsPointer()->size(); i++) {
         VkDescriptorBufferInfo bufferInfo{};
-        bufferInfo.buffer = m_uniformBuffers.at(i)->GetBuffer();
+        bufferInfo.buffer = m_uniformBuffers.at(i).GetBuffer();
         bufferInfo.offset = 0;
         bufferInfo.range = sizeof(UniformBuffer::UBO);
 
