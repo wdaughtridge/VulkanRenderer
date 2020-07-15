@@ -72,14 +72,14 @@ int RVK::Renderer::UpdateUniformBuffer()
 {
     Camera::MouseDelta mD = Camera::GetMouseDelta();
 
-    if (mD.dX != 0 && mD.dY != 0) {
-        m_camera.m_yaw += static_cast<float>(mD.dX);
-        m_camera.m_pitch -= static_cast<float>(mD.dY);
+    if (mD.dX != 0 || mD.dY != 0) {
+        m_camera.m_yaw += mD.dX;
+        m_camera.m_pitch += mD.dY;
 
         if(m_camera.m_pitch > 89.0f)
             m_camera.m_pitch = 89.0f;
         if(m_camera.m_pitch < -89.0f)
-            m_camera.m_pitch = -89.0f;
+            m_camera.m_yaw = -89.0f;
 
         glm::vec3 direction;
         direction.x = cos(glm::radians(m_camera.m_yaw)) * cos(glm::radians(m_camera.m_pitch));
@@ -105,7 +105,7 @@ int RVK::Renderer::UpdateUniformBuffer()
 
     if (e.key == GLFW_KEY_W) {
         for (auto & i : *m_commandBuffer.GetUniformBuffersPointer()) {
-            m_camera.m_cameraPosition.z += 0.5;
+            m_camera.m_cameraPosition += m_camera.m_cameraFront;
             m_camera.m_view = glm::lookAt(m_camera.m_cameraPosition, m_camera.m_cameraPosition + m_camera.m_cameraFront, m_camera.m_cameraUp);
             i.m_uniforms.view = m_camera.m_view;
             i.MapUniformBufferMemory();
@@ -114,7 +114,7 @@ int RVK::Renderer::UpdateUniformBuffer()
     }
     if (e.key == GLFW_KEY_A) {
         for (auto & i : *m_commandBuffer.GetUniformBuffersPointer()) {
-            m_camera.m_cameraPosition.x -= 0.5;
+            m_camera.m_cameraPosition -= glm::normalize(glm::cross(m_camera.m_cameraFront, m_camera.m_cameraUp));
             m_camera.m_view = glm::lookAt(m_camera.m_cameraPosition, m_camera.m_cameraPosition + m_camera.m_cameraFront, m_camera.m_cameraUp);
             i.m_uniforms.view = m_camera.m_view;
             i.MapUniformBufferMemory();
@@ -123,7 +123,7 @@ int RVK::Renderer::UpdateUniformBuffer()
     }
     if (e.key == GLFW_KEY_S) {
         for (auto & i : *m_commandBuffer.GetUniformBuffersPointer()) {
-            m_camera.m_cameraPosition.z -= 0.5;
+            m_camera.m_cameraPosition -= m_camera.m_cameraFront;
             m_camera.m_view = glm::lookAt(m_camera.m_cameraPosition, m_camera.m_cameraPosition + m_camera.m_cameraFront, m_camera.m_cameraUp);
             i.m_uniforms.view = m_camera.m_view;
             i.MapUniformBufferMemory();
@@ -132,7 +132,7 @@ int RVK::Renderer::UpdateUniformBuffer()
     }
     if (e.key == GLFW_KEY_D) {
         for (auto & i : *m_commandBuffer.GetUniformBuffersPointer()) {
-            m_camera.m_cameraPosition.x += 0.5;
+            m_camera.m_cameraPosition += glm::normalize(glm::cross(m_camera.m_cameraFront, m_camera.m_cameraUp));
             m_camera.m_view = glm::lookAt(m_camera.m_cameraPosition, m_camera.m_cameraPosition + m_camera.m_cameraFront, m_camera.m_cameraUp);
             i.m_uniforms.view = m_camera.m_view;
             i.MapUniformBufferMemory();

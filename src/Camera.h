@@ -19,8 +19,8 @@ public:
     };
 
     struct MouseDelta {
-        int16_t dX;
-        int16_t dY;
+        double dX;
+        double dY;
     };
 
     glm::vec3 m_cameraFront;
@@ -35,14 +35,18 @@ public:
 
     glm::mat4 m_model;
 
-    float m_yaw;
+    double m_yaw;
 
-    float m_pitch;
+    double m_pitch;
 
 private:
     static std::queue<KeyEvent> s_keyQueue;
 
     static MouseDelta s_mouseDelta;
+
+    static double m_last_x;
+
+    static double m_last_y;
 
 public:
     Camera() :
@@ -51,7 +55,9 @@ public:
         m_cameraUp({0.0f, 1.0f, 0.0f}),
         m_model(glm::mat4(1.0f)),
         m_view(glm::lookAt(m_cameraPosition, m_cameraFront + m_cameraPosition, m_cameraUp)),
-        m_proj(glm::perspective(glm::radians(45.0f), 1024.0f / (float) 768.0f, 0.1f, 100.0f))
+        m_proj(glm::perspective(glm::radians(45.0f), 1024.0f / (float) 768.0f, 0.1f, 100.0f)),
+        m_yaw(0),
+        m_pitch(0)
     {
     }
 
@@ -67,9 +73,6 @@ public:
 
     static Camera::MouseDelta GetMouseDelta()
     {
-        if (s_mouseDelta.dX == 0 && s_mouseDelta.dY == 0)
-            return {0,0};
-
         MouseDelta ret = s_mouseDelta;
         s_mouseDelta = {0,0};
         return ret;
@@ -77,29 +80,17 @@ public:
 
     static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
     {
-        if (key == GLFW_KEY_W && (action == GLFW_PRESS || action == GLFW_REPEAT)) {
+        if ((key == GLFW_KEY_W || key == GLFW_KEY_A || key == GLFW_KEY_S || key == GLFW_KEY_D) && (action == GLFW_PRESS || action == GLFW_REPEAT))
             s_keyQueue.push({static_cast<int16_t>(key), static_cast<int16_t>(action)});
-        }
-        else if (key == GLFW_KEY_A && (action == GLFW_PRESS || action == GLFW_REPEAT)) {
-            s_keyQueue.push({static_cast<int16_t>(key), static_cast<int16_t>(action)});
-        }
-        else if (key == GLFW_KEY_S && (action == GLFW_PRESS || action == GLFW_REPEAT)) {
-            s_keyQueue.push({static_cast<int16_t>(key), static_cast<int16_t>(action)});
-        }
-        else if (key == GLFW_KEY_D && (action == GLFW_PRESS || action == GLFW_REPEAT)) {
-            s_keyQueue.push({static_cast<int16_t>(key), static_cast<int16_t>(action)});
-        }
     }
 
     static void cursor_position_callback(GLFWwindow* window, double xpos, double ypos)
     {
-        double x, y;
-        glfwGetCursorPos(window, &x, &y);
+        s_mouseDelta.dX += (xpos - m_last_x);
+        s_mouseDelta.dY += (ypos - m_last_y);
 
-        s_mouseDelta.dX += x;
-        s_mouseDelta.dY += y;
-
-        glfwSetCursorPos(window, 0, 0);
+        m_last_x = xpos;
+        m_last_y = ypos;
     }
 };
 

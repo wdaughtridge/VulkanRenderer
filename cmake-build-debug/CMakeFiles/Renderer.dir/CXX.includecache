@@ -1466,6 +1466,20 @@ vk_platform.h
 
 ../include/vulkan/vulkan_xlib_xrandr.h
 
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/main.cpp
+src/Application.h
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Application.h
+
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Application.h
+Includes.h
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Includes.h
+Renderer.h
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Renderer.h
+
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Camera.cpp
+Camera.h
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Camera.h
+
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Camera.h
 Includes.h
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Includes.h
@@ -1473,6 +1487,10 @@ glm/glm.hpp
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/glm/glm.hpp
 glm/gtc/matrix_transform.hpp
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/glm/gtc/matrix_transform.hpp
+
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/CommandBuffer.cpp
+CommandBuffer.h
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/CommandBuffer.h
 
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/CommandBuffer.h
 Includes.h
@@ -1496,6 +1514,10 @@ UniformBuffer.h
 Model.h
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Model.h
 
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Framebuffer.cpp
+Framebuffer.h
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Framebuffer.h
+
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Framebuffer.h
 Includes.h
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Includes.h
@@ -1505,6 +1527,10 @@ GraphicsPipeline.h
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/GraphicsPipeline.h
 LogicalDevice.h
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/LogicalDevice.h
+
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/GraphicsPipeline.cpp
+GraphicsPipeline.h
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/GraphicsPipeline.h
 
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/GraphicsPipeline.h
 Includes.h
@@ -1546,6 +1572,10 @@ queue
 algorithm
 -
 
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/IndexBuffer.cpp
+IndexBuffer.h
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/IndexBuffer.h
+
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/IndexBuffer.h
 Includes.h
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Includes.h
@@ -1554,17 +1584,29 @@ LogicalDevice.h
 PhysicalDevice.h
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/PhysicalDevice.h
 
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Instance.cpp
+Instance.h
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Instance.h
+
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Instance.h
 Includes.h
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Includes.h
 Window.h
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Window.h
 
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/LogicalDevice.cpp
+LogicalDevice.h
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/LogicalDevice.h
+
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/LogicalDevice.h
 Includes.h
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Includes.h
 PhysicalDevice.h
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/PhysicalDevice.h
+
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Model.cpp
+Model.h
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Model.h
 
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Model.h
 Includes.h
@@ -1587,6 +1629,10 @@ PhysicalDevice.h
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/PhysicalDevice.h
 future
 -
+
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/PhysicalDevice.cpp
+PhysicalDevice.h
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/PhysicalDevice.h
 
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/PhysicalDevice.h
 Includes.h
@@ -1630,17 +1676,29 @@ UniformBuffer.h
 Camera.h
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Camera.h
 
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Semaphore.cpp
+Semaphore.h
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Semaphore.h
+
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Semaphore.h
 Includes.h
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Includes.h
 LogicalDevice.h
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/LogicalDevice.h
 
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Shader.cpp
+Shader.h
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Shader.h
+
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Shader.h
 Includes.h
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Includes.h
 LogicalDevice.h
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/LogicalDevice.h
+
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Swapchain.cpp
+Swapchain.h
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Swapchain.h
 
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Swapchain.h
 Includes.h
@@ -1653,6 +1711,10 @@ PhysicalDevice.h
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/PhysicalDevice.h
 IndexBuffer.h
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/IndexBuffer.h
+
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/UniformBuffer.cpp
+UniformBuffer.h
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/UniformBuffer.h
 
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/UniformBuffer.h
 Includes.h
@@ -1668,6 +1730,10 @@ PhysicalDevice.h
 Camera.h
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Camera.h
 
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/VertexBuffer.cpp
+VertexBuffer.h
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/VertexBuffer.h
+
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/VertexBuffer.h
 Includes.h
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Includes.h
@@ -1677,6 +1743,10 @@ LogicalDevice.h
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/LogicalDevice.h
 PhysicalDevice.h
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/PhysicalDevice.h
+
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Window.cpp
+Window.h
+/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Window.h
 
 /Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Window.h
 Includes.h
