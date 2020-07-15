@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Renderer"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Renderer">
+				<Option output="/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release/Renderer" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/wdaughtridge/CLionProjects/VulkanRenderer/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/11.0.3/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release/Makefile&quot;  VERBOSE=1 Renderer"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Renderer/fast">
+				<Option output="/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release/Renderer" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/wdaughtridge/CLionProjects/VulkanRenderer/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/11.0.3/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release/Makefile&quot;  VERBOSE=1 Renderer/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/wdaughtridge/CLionProjects/VulkanRenderer/cmake-build-release/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/main.cpp">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Application.h">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Camera.cpp">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Camera.h">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/CommandBuffer.cpp">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/CommandBuffer.h">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Framebuffer.cpp">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Framebuffer.h">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/GraphicsPipeline.cpp">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/GraphicsPipeline.h">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Includes.h">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/IndexBuffer.cpp">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/IndexBuffer.h">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Instance.cpp">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Instance.h">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/LogicalDevice.cpp">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/LogicalDevice.h">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Model.cpp">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Model.h">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/PhysicalDevice.cpp">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/PhysicalDevice.h">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Renderer.cpp">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Renderer.h">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Semaphore.cpp">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Semaphore.h">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Shader.cpp">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Shader.h">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Swapchain.cpp">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Swapchain.h">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/UniformBuffer.cpp">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/UniformBuffer.h">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/VertexBuffer.cpp">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/VertexBuffer.h">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Window.cpp">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/src/Window.h">
+			<Option target="Renderer"/>
+		</Unit>
+		<Unit filename="/Users/wdaughtridge/CLionProjects/VulkanRenderer/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
